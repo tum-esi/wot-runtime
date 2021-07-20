@@ -1,0 +1,305 @@
+{
+  "@context": ["https://www.w3.org/2019/wot/td/v1"],
+  "id": "urn:dev:org:wot-runtime:<systemRuntimeId>",
+  "title": "<title>",
+  "description": "A TD for the runtime controller exposed by the wot-runtime",
+  "securityDefinitions": {
+    "nosec_sc": { "scheme": "nosec" },
+    "basic_sc": { "scheme": "basic", "in": "header" }
+  },
+  "security": ["no_sec"],
+  "properties": {
+    "system": {
+      "description": "The system record in the database",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "_id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "sd": { "type": "object" },
+        "code": { "type": "string" }
+      }
+    },
+    "mashupLogic": {
+      "description": "The mashupLogic of the system script",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "name": { "type": "string" },
+        "root": {
+          "type": "object"
+        },
+        "actions": {
+          "type": "object"
+        },
+        "functions": {
+          "type": "object"
+        },
+        "properties": {
+          "type": "object"
+        }
+      }
+    },
+    "seqD": {
+      "description": "The seqD of the system script",
+      "type": "string",
+      "readOnly": true
+    },
+    "codeTS": {
+      "description": "The TypeScript code generated from the SD of the system",
+      "type": "string",
+      "readOnly": true,
+      "contentMediaType": "text/x.typescript"
+    },
+    "baseTS": {
+      "description": "The TypeScript index.ts base code generated from the SD of the system",
+      "type": "string",
+      "readOnly": true,
+      "contentMediaType": "text/x.typescript"
+    },
+    "code": {
+      "description": "The JavaScript code generated from the SD of the system",
+      "type": "string",
+      "readOnly": true,
+      "contentMediaType": "text/javascript"
+    },
+    "base": {
+      "description": "The JavaScript index.js base code generated from the SD of the system",
+      "type": "string",
+      "readOnly": true,
+      "contentMediaType": "text/javascript"
+    },
+    "logs": {
+      "description": "The runtime logs",
+      "type": "object",
+      "observable": true,
+      "readOnly": true,
+      "properties": {
+        "_id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "td": {
+          "type": "object"
+        }
+      }
+    },
+    "traces": {
+      "description": "The runtime traces",
+      "type": "object",
+      "observable": true,
+      "readOnly": true,
+      "properties": {
+        "_id": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "td": { "type": "object" }
+      }
+    },
+    "hostOS": {
+      "description": "A string identifying the operating system platform on which the Node.js process is running",
+      "type": "string",
+      "enum": [
+        "aix",
+        "darwin",
+        "freebsd",
+        "linux",
+        "openbsd",
+        "sunos",
+        "win32"
+      ],
+      "observable": true,
+      "readOnly": true
+    },
+    "memoryUsage": {
+      "description": "An object describing the memory usage of the Node.js process measured in bytes",
+      "type": "object",
+      "observable": true,
+      "readOnly": true,
+      "properties": {
+        "rss": {
+          "type": "number",
+          "unit": "bytes",
+          "minimum": 0.0
+        },
+        "heapTotal": {
+          "type": "number",
+          "unit": "bytes",
+          "minimum": 0.0
+        },
+        "heapUsed": {
+          "type": "number",
+          "unit": "bytes",
+          "minimum": 0.0
+        },
+        "external": {
+          "type": "number",
+          "unit": "bytes",
+          "minimum": 0.0
+        },
+        "arrayBuffers": {
+          "type": "number",
+          "unit": "bytes",
+          "minimum": 0.0
+        }
+      }
+    },
+    "resourceUsage": {
+      "description": "An object describing the resource usage of the current Node.js process",
+      "type": "object",
+      "observable": true,
+      "readOnly": true,
+      "properties": {
+        "userCPUTime": {
+          "type": "number",
+          "unit": "ms",
+          "minimum": 0.0
+        },
+        "systemCPUTime": {
+          "type": "number",
+          "unit": "ms",
+          "minimum": 0.0
+        },
+        "maxRSS": {
+          "type": "number",
+          "unit": "KB",
+          "minimum": 0.0
+        },
+        "sharedMemorySize": {
+          "type": "number",
+          "unit": "KB",
+          "minimum": 0.0
+        },
+        "unsharedDataSize": {
+          "type": "number",
+          "unit": "KB",
+          "minimum": 0.0
+        },
+        "unsharedStackSize": {
+          "type": "number",
+          "unit": "KB",
+          "minimum": 0.0
+        },
+        "minorPageFault": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "majorPageFault": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "swappedOut": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "fsRead": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "fsWrite": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "ipcSent": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "ipcReceived": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "signalsCount": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "voluntaryContextSwitches": {
+          "type": "number",
+          "minimum": 0.0
+        },
+        "involuntaryContextSwitches": {
+          "type": "number",
+          "minimum": 0.0
+        }
+      }
+    },
+    "uptime": {
+      "description": "The number of seconds the current Node.js process has been running",
+      "type": "number",
+      "observable": true,
+      "readOnly": true,
+      "unit": "s",
+      "minimum": 0.0
+    },
+    "status": {
+      "description": "The current status of the runtime",
+      "type": "string",
+      "observable": true,
+      "readOnly": true,
+      "enum": ["idle", "loading", "running", "working", "stopped", "failed"]
+    },
+    "statusSvg": {
+      "description": "An SVG string of the current status of the runtime",
+      "type": "string",
+      "observable": true,
+      "readOnly": true
+    },
+    "statechartSvg": {
+      "description": "An SVG string of the state chart representing the current status of the runtime",
+      "type": "string",
+      "observable": true,
+      "readOnly": true
+    },
+    "step": {
+      "description": "An string to track the current step being executed in the Mashup Logic",
+      "type": "string",
+      "observable": true,
+      "readOnly": true
+    }
+  },
+  "actions": {
+    "start": {
+      "description": "Starts a WoT System Runtime process for the WoT System",
+      "idempotent": true
+    },
+    "restart": {
+      "description": "Restarts a WoT System Runtime process for the WoT System",
+      "idempotent": true
+    },
+    "stop": {
+      "description": "Stops a WoT System Runtime process for the WoT System",
+      "idempotent": true
+    }
+  },
+  "events": {
+    "start": {
+      "description": "WoT System Runtime changed status from 'idle' to 'loading'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    },
+    "done": {
+      "description": "WoT System Runtime changed status to 'running'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    },
+    "work": {
+      "description": "WoT System Runtime changed status from 'running' to 'working'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    },
+    "restart": {
+      "description": "WoT System Runtime changed status to 'loading'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    },
+    "stop": {
+      "description": "WoT System Runtime changed status from 'running' to 'stopped'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    },
+    "error": {
+      "description": "WoT System Runtime changed status from 'running' to 'failed'",
+      "data": { "type": "string", "description": "The ID of the System" }
+    }
+  }
+}

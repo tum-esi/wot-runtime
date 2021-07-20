@@ -1,0 +1,36 @@
+// logs:
+
+.loglevel-critical {
+  color: red;
+}
+
+.loglevel-error {
+  color: red;
+  background-color: transparent !important;
+}
+
+.loglevel-warn {
+  color: gold;
+  background-color: transparent !important;
+}
+
+.loglevel-info {
+  color: blue;
+  background-color: transparent !important;
+}
+
+.loglevel-debug {
+  color: black;
+}
+
+.loglevel-trace {
+  color: grey;
+}
+
+.loglevel-audit {
+  color: grey;
+}
+
+.loglevel-metric {
+  color: grey;
+}

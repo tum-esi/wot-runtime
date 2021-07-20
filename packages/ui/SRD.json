@@ -1,0 +1,45 @@
+{
+  "@context": ["https://www.w3.org/ns/td"],
+  "id": "urn:dev:org:wot-runtime:<systemId>",
+  "title": "<systemName>",
+  "description": "WoT System Runtime Description hosted by the WoT Runtime",
+  "properties": {
+    "system": {},
+    "logs": {},
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "platform": {},
+        "memoryUsage": {},
+        "resourceUsage": {},
+        "uptime": {}
+      }
+    },
+    "traces": {},
+    "status": {
+      "type": "string",
+      "enum": ["idle", "loading", "running", "working", "stopped", "failed"]
+    },
+    "statusSvg": {},
+    "mashupLogic": {},
+    "seqD": {},
+    "codeTS": {},
+    "baseTS": {},
+    "code": {},
+    "base": {}
+  },
+  "actions": {
+    "start": {},
+    "restart": {},
+    "stop": {}
+  },
+  "events": {
+    "start": {},
+    "load": {},
+    "work": {},
+    "done": {},
+    "restart": {},
+    "stop": {},
+    "error": {}
+  }
+}
